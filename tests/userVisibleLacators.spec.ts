@@ -6,6 +6,11 @@ test.beforeEach(async({page})=>{
   await page.getByText('Form Layouts').click();
 
 })
+// input field- page.getByRole('textbox')
+// page.getByRole('button',{name:'Sign In'})
+//lable - page.getByLable('Email)
+//placeholder - page.getByPlaceHolder('Email)
+// text - page.getBytext('SignIn')
 
 test('User-Facing-Locator',async ({page})=>{
 

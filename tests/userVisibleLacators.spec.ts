@@ -28,8 +28,11 @@ test('User-Facing-Locator',async ({page})=>{
 
  await page.getByTestId('Sign').first().click();
 
-
-
-
-
 })
+// locating Child Element
+test('User-Facing-Locator',async ({page})=>{
+
+  await page.getByRole('textbox',{name: "Email"}).first().click();
+  
+  
+ })

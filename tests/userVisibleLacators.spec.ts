@@ -13,26 +13,21 @@ test.beforeEach(async({page})=>{
 // text - page.getBytext('SignIn')
 
 test('User-Facing-Locator',async ({page})=>{
-
- await page.getByRole('textbox',{name: "Email"}).first().click();
- await page.getByRole('button',{name: "Sign in"}).first().click();
-
- await page.getByLabel('Email').first().click();
-
- await page.getByPlaceholder('Jane Doe').first().click();
-
- await page.getByText('Using the Grid').first().click();
-
- await page.getByTitle('Using the Grid').first().click();
-
-
- await page.getByTestId('Sign').first().click();
-
+  await page.getByRole('textbox',{name: "Email"}).first().click();
+  await page.getByRole('button',{name: "Sign in"}).first().click();
+  await page.getByLabel('Email').first().click();
+  await page.getByPlaceholder('Jane Doe').first().click();
+  await page.getByText('Using the Grid').first().click();
+  await page.getByTitle('Using the Grid').first().click();
+  await page.getByTestId('Sign').first().click();
 })
+
 // locating Child Element
 test('User-Facing-Locator',async ({page})=>{
+    await page.getByRole('textbox',{name: "Email"}).first().click();
+    page.locator('div input');
+    page.locator('div').getByRole('textbox')
+    page.locator('nb-radio-group').locator('nb-radio').nth(0)
+    page.locator('nb-radio-group').locator('nb-radio').nth(1)
+})
 
-  await page.getByRole('textbox',{name: "Email"}).first().click();
-  
-  
- })

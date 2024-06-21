@@ -23,11 +23,23 @@ test('User-Facing-Locator',async ({page})=>{
 })
 
 // locating Child Element
-test('User-Facing-Locator',async ({page})=>{
+test('Child-Element',async ({page})=>{
     await page.getByRole('textbox',{name: "Email"}).first().click();
     page.locator('div input');
     page.locator('div').getByRole('textbox')
     page.locator('nb-radio-group').locator('nb-radio').nth(0)
     page.locator('nb-radio-group').locator('nb-radio').nth(1)
 })
+
+//Locating Parent element
+test('Parent-Element',async ({page})=>{   
+  await page.locator('nb-card',{hasText:"Using the Grid"}). getByRole('textbox',{name: "Email"}).click();
+  await page.locator('nb-card',{has: page.locator("Email1")}).getByRole('textbox',{name: "Email"}).click();
+
+  await page.locator('nb-card').filter({hasText:"Basic Form"}).getByRole('textbox',{name: "Email"}).click();
+  await page.locator('nb-card').filter({has:page.locator("Basic Form")}).getByRole('textbox',{name: "Email"}).click();
+  await page.locator('nb-card').filter({has:page.locator("check-box")}).filter({hasText:"Sign in"}).getByRole('textbox',{name: "Email"}).click();
+
+})
+
 

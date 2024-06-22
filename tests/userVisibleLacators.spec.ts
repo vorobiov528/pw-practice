@@ -71,5 +71,23 @@ test('Reusible-Locator',async ({page})=>{
   //Placeholder Text
   const placeHolderValue = await emailField.getAttribute('placeholder')
   expect(placeHolderValue).toEqual('Email')
-  })
+  });
+
+test('Assertion',async({page})=>{
+    const basicFormButton = page.locator('nb-card').filter({hasText:"Basic form"}).locator('button')
+    
+    //Generic Asserion
+    const value = 5
+    expect(value).toEqual(5)
+
+    const text = await basicFormButton.textContent()
+    expect(text).toEqual('Submit');
+
+    // locator Assertion
+    await expect(basicFormButton).toHaveText('Submit')
+    
+    //Soft Assertions continue execution after faild
+    await expect.soft(basicFormButton).toHaveText('Submit')
+})
+
 })

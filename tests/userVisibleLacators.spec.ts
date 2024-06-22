@@ -51,4 +51,25 @@ test('Reusible-Locator',async ({page})=>{
 
   await expect(emailField).toHaveValue('test@test.com')
   })
+
+  test('Extracting-value-Text',async ({page})=>{   
+      //ssingle test value
+    const basicForm = page.locator('nb-card').filter({hasText:'Basic form'});
+    const buttonText = await basicForm.locator('button').textContent;
+    expect (buttonText).toEqual('Submit')
+
+    //All text value
+    const allRadioBtnLables = await page.locator('nb-radio').allTextContents();
+    expect (allRadioBtnLables).toContain('Option1')
+    
+    //input value
+  const emailField = basicForm.getByRole('textbox',{name:"Email"});
+  await emailField.fill('test@test.com');
+  const emailValue = await emailField.inputValue();
+  expect (emailValue).toEqual('test@test.com')
+
+  //Placeholder Text
+  const placeHolderValue = await emailField.getAttribute('placeholder')
+  expect(placeHolderValue).toEqual('Email')
+  })
 })

@@ -90,4 +90,11 @@ test('Assertion',async({page})=>{
     await expect.soft(basicFormButton).toHaveText('Submit')
 })
 
+// for autowaiting we can use: 
+// await expect(seectorSuccsesBtn).toHaveText('text',{timeout:20000})
+//or wait for network call be completed 
+// await page.waitForResponce('url taken from: Network->Responce->Header')
+// or WAIT FORE ALL API CALL COMPLETED -> await page.waitForLoadState('networkidle')
+// or
+//page.waitForTimeout
 })
